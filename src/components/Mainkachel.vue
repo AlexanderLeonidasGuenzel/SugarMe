@@ -11,7 +11,7 @@
 
 <template>
   <div class="w-3/4 h-46 bg-red-500">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Wiki_Test_Image.jpg" alt="Testimage" class="w-40 h-40 rounded"/>
-    <div> {{ props.mainproduct.name }} </div>
+    <img src="https://images.openfoodfacts.org/images/products/403/740/034/4980/front_de.3.400.jpg" alt="Testimage" class="w-48 h-40 rounded"/>
+    <!--<div> {{ props.mainproduct.name }} </div>-->
   </div>
 </template>
