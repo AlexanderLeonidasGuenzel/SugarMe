@@ -13,7 +13,7 @@ export async function receiveJsonByBarcode(barcode: string) : Promise<any> {
 
 export async function receiveJsonByCategory(category: string) : Promise<any> {
     try {
-        const response: Response = await fetch("https://world.openfoodfacts.net/api/v2/search?categories_tags=" + category + "&countries_tags_en=Germany&sort_by=nothing");
+        const response: Response = await fetch("https://world.openfoodfacts.net/api/v2/search?categories_tags=" + category + "&countries_tags_en=Germany&sort_by=nothing"); //&sugars_100g<60
         return await response.json();
     } catch (e) {
         console.log(e);
@@ -40,7 +40,7 @@ export function createProduct(json: any) : Product {
     product.allergene = productjson["allergens"];
     categoriearray = productjson["categories_tags"]
 
-    for (let i: number = 0; i < categoriearray.length; i++) {
+    for (let i: number = 0; i < 2; i++) {
         let categorie: string = categoriearray[i].indexOf(":") > 0 ? categoriearray[i].split(":")[1] : categoriearray[i];
         if (i !== 0) {
             categroriestags += "," + categorie;
