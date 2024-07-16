@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 <script setup lang="ts">
 
 /*
@@ -11,6 +13,7 @@ import { Product } from "@/assets/js/foodapi/product";
 import Mainkachel from "@/components/Mainkachel.vue";
 import Listenelement from "@/components/Listenelement.vue";
 import Filterbutton from "@/components/Filterbutton.vue";
+import Headercomponent from "@/components/Headercomponent.vue";
 
 let loadData: Ref<Boolean> = ref(false);
 
@@ -33,22 +36,16 @@ onBeforeMount(async () => {
   <div class="relative flex justify-center items-center w-full h-full">
     <!-- MAIN -->
     <div class="flex flex-col justify-between items-center w-1/3 h-full bg-gray-100 p-5">
-      <div class="flex justify-center items-center w-full">
-        <input type="text" class="w-3/4 h-10 outline-none rounded mr-2 px-1">
-        <button class="flex justify-center items-center bg-cyan-700 text-white text-md w-10 h-10 rounded-md mr-2"><span class="searchicon">search</span></button>
-        <button class="flex justify-center items-center bg-cyan-700 text-white text-md w-10 h-10 rounded-md"><span class="barcodeicon">barcode_scanner</span></button>
-      </div>
+      <Headercomponent />
 
       <Mainkachel :mainproduct="mainproduct" v-if="loadData"/>
 
       <!-- FILTERBUTTON -->
-      <div>
-        <Filterbutton :sugar="mainproduct.zucker" @click:half="halfSugar(mainproduct)" v-if="loadData"/>
-      </div>
+      <Filterbutton :sugar="mainproduct.zucker" @click:half="halfSugar(mainproduct)" v-if="loadData"/>
 
-      <div class="w-full h-3/5 bg-green-500 overflow-y-auto" v-if="loadData">
+      <div class="w-full h-3/5 overflow-y-auto" v-if="loadData">
         <div v-for="(item, index) in productlist" :key="index">
-          <Listenelement class="w-full h-12 bg-yellow-500" :child="item" v-if="item.name !== undefined && item.name !== ''"></Listenelement>
+          <Listenelement class="flex items-center w-full h-12 hover:bg-gray-200 border-b border-cyan-700 cursor-pointer" :child="item" v-if="item.name !== undefined && item.name !== ''"></Listenelement>
         </div>
       </div>
     </div>

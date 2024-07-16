@@ -10,8 +10,10 @@
 </script>
 
 <template>
-  <div class="w-3/4 h-46 bg-red-500">
-    <img src="https://images.openfoodfacts.org/images/products/403/740/034/4980/front_de.3.400.jpg" alt="Testimage" class="w-48 h-40 rounded"/>
-    <!--<div> {{ props.mainproduct.name }} </div>-->
+  <div class="relative flex w-3/4 h-46">
+    <img src="https://images.openfoodfacts.org/images/products/403/740/034/4980/front_de.3.400.jpg" alt="Testimage" class="w-1/2 h-full rounded"/>
+    <div class="relative flex justify-center w-1/2 h-full bg-cyan-700 text-xs">
+      {{ props.mainproduct.name }}
+    </div>
   </div>
 </template>
