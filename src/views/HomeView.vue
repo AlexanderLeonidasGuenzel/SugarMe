@@ -14,6 +14,7 @@ import Mainkachel from "@/components/Mainkachel.vue";
 import Listenelement from "@/components/Listenelement.vue";
 import Filterbutton from "@/components/Filterbutton.vue";
 import Headercomponent from "@/components/Headercomponent.vue";
+import HeaderImage from "@/components/HeaderImage.vue";
 
 let loadData: Ref<Boolean> = ref(false);
 
@@ -41,6 +42,7 @@ onBeforeMount(async () => {
   <div class="relative flex justify-center items-center w-full h-full">
     <!-- MAIN -->
     <div class="flex flex-col justify-between items-center w-1/3 min-w-[375px] h-full bg-gray-100 p-5">
+      <HeaderImage />
       <Headercomponent />
 
       <Mainkachel :mainproduct="mainproduct" v-if="loadData"/>
