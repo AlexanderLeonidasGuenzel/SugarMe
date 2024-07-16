@@ -74,3 +74,10 @@ export function createProduct(json: any) : Product {
 
     return product;
 }
+
+export function halfSugar(product: Product) {
+    let sugar: number = Math.floor(product.zucker / 2);
+
+    console.log(product.zucker);
+    console.log(sugar);
+}

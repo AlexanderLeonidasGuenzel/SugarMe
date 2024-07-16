@@ -1,8 +1,8 @@
 /* eslint-disable */
 
 export class Product {
-    name: string = "";
-    barcode: string = "";
+    name: string | undefined = "";
+    barcode: string | undefined = "";
     allergene: string = "";
     kategorie: string = "";
     zutatenliste_string: string = ""; //ingedients-text_de
