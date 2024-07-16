@@ -10,10 +10,14 @@
 </script>
 
 <template>
-  <div class="relative flex w-3/4 h-46">
-    <img src="https://images.openfoodfacts.org/images/products/403/740/034/4980/front_de.3.400.jpg" alt="Testimage" class="w-1/2 h-full rounded"/>
-    <div class="relative flex justify-center w-1/2 h-full bg-cyan-700 text-xs">
-      {{ props.mainproduct.name }}
+  <div class="relative w-3/4 h-46">
+    <p class="text-md text-black font-bold"> Dein Produkt: </p>
+    <div class="relative flex w-full h-46 shadow shadow-cyan-700">
+      <img src="https://images.openfoodfacts.org/images/products/403/740/034/4980/front_de.3.400.jpg" alt="Testimage" class="w-1/2 h-full rounded"/>
+      <div class="relative justify-center w-1/2 h-full text-xs">
+        <div class="w-full text-nowrap"> {{ props.mainproduct.name }} </div>
+        <div class="w-full text-nowrap"> Zucker: {{ props.mainproduct.zucker }} á 100g </div>
+      </div>
     </div>
   </div>
 </template>

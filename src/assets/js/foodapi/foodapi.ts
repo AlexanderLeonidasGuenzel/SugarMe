@@ -34,7 +34,7 @@ export function createProduct(json: any) : Product {
 
     const nutrimentsjson: any = productjson["nutriments"];
 
-    product.name = productjson["product_name"];
+    product.name = productjson["product_name_de"];
     product.barcode = productjson["code"];
 
     product.allergene = productjson["allergens"];
