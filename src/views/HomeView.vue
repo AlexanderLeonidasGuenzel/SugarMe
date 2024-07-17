@@ -32,14 +32,24 @@ async function loadProductData(barcode: string) {
     loadData.value = false;
     searching.value = true;
     const barcodejson = await receiveJsonByBarcode(barcode);
-    mainproduct = reactive(createProduct(barcodejson));
-    const json = await receiveJsonByCategory(mainproduct.kategorie);
-    for (let i = 0; i < json.products.length; i++) {
-      productlist.push(reactive(createProduct(json.products[i])));
+
+    if (Object.keys(barcode).length > 0) {
+      mainproduct = reactive(createProduct(barcodejson));
+      const json = await receiveJsonByCategory(mainproduct.kategorie);
+      for (let i = 0; i < json.products.length; i++) {
+        productlist.push(reactive(createProduct(json.products[i])));
+      }
+    } else {
+      console.log("Es wurde kein Produkt gefunden");
     }
+
     searching.value = false;
     loadData.value = true;
   }
+}
+
+async function handleClickListitem(value: Product) {
+  await loadProductData(value.barcode!!);
 }
 </script>
 
@@ -64,7 +74,7 @@ async function loadProductData(barcode: string) {
       <div class="relative w-full h-3/5 my-5 overflow-y-auto" v-if="loadData">
         <div v-if="loadData">
           <div v-for="(item, index) in productlist" :key="index">
-            <ListItem class="flex items-center w-full h-12 pr-1 hover:bg-gray-200 border-b border-cyan-700 cursor-pointer" :child="item" v-if="item.name !== undefined && item.name !== ''"></ListItem>
+            <ListItem class="flex items-center w-full h-12 pr-1 hover:bg-gray-200 border-b border-cyan-700 cursor-pointer" :child="item" v-if="item.name !== undefined && item.name !== ''" @click:item="handleClickListitem"></ListItem>
           </div>
         </div>
       </div>
