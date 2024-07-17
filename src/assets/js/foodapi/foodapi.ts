@@ -38,7 +38,7 @@ export function createProduct(json: any) : Product {
     product.barcode = productjson["code"];
 
     product.allergene = productjson["allergens"];
-    categoriearray = productjson["categories_tags"]
+    categoriearray = productjson["categories_tags"];
 
     for (let i: number = 0; i < 2; i++) {
         let categorie: string = categoriearray[i].indexOf(":") > 0 ? categoriearray[i].split(":")[1] : categoriearray[i];
@@ -50,6 +50,7 @@ export function createProduct(json: any) : Product {
     }
     product.kategorie = categroriestags;
     product.zutatenliste_string = productjson["ingredients_text"];
+    product.product_image = productjson["image_url"];
 
     product.kcal = nutrimentsjson["energy-kcal_100g"];
     product.kcal_unit = nutrimentsjson["energy-kcal_100g"];
@@ -75,9 +76,11 @@ export function createProduct(json: any) : Product {
     return product;
 }
 
+/*
 export function halfSugar(product: Product) {
     let sugar: number = Math.floor(product.zucker / 2);
 
     console.log(product.zucker);
     console.log(sugar);
 }
+*/

@@ -18,7 +18,7 @@ export class Product {
     gesaettigte_fettsaeuren_unit: string = ""; //saturated_fat_unit
     natrium: number = 0.00; //sodium_100g
     natrium_unit: string = ""; //sodium_unit
-    zucker: undefined | number = 0.00; //sugars_100g
+    zucker: number = 0.00; //sugars_100g
     zucker_unit: string = ""; //sugars_unit
     koffein: number = 0.00; //caffeine_100g
     koffein_unit: string = ""; //caffeine_unit
@@ -26,4 +26,5 @@ export class Product {
     vitamin_b6_unit: string = ""; //vitamin-b6_unit
     vitamin_b12: number = 0.00; //vitamin-b12_100g
     vitamin_b12_unit: string = ""; //vitamin-b12_unit
+    product_image: string = "";
 }
