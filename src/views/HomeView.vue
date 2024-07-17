@@ -18,6 +18,7 @@ import Footer from "@/components/Footer.vue";
 import Loadscreen from "@/components/Loadscreen.vue";
 import NotFound from "@/components/NotFound.vue";
 import ListContainer from "@/components/ListContainer.vue";
+import StartText from "@/components/StartText.vue";
 
 let loadData: Ref<Boolean> = ref(false);
 let searching: Ref<Boolean> = ref(false);
@@ -68,11 +69,12 @@ async function handleClickListitem(value: Product) {
     <div class="flex flex-col items-center w-[489px] min-w-[375px] max-w-[489px] h-screen bg-gray-100 px-10 pt-5">
       <Header />
       <Search @click:search="loadProductData" @enter:search="loadProductData" />
+      <StartText></StartText>
       <Loadscreen :isLoading="searching" v-if="searching && searchbarcode !== ''" />
       <NotFound v-if="loadFailure" />
       <YourProduct :mainproduct="mainproduct" :imageurl="mainproduct.product_image" v-if="loadData"/>
       <ListContainer child="mainproduct" v-if="loadData" :productlist="productlist" @click:item="handleClickListitem"/>
-    <Footer></Footer>
+      <Footer></Footer>
     </div>
   </div>
 </template>
