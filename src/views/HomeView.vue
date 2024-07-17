@@ -10,10 +10,10 @@ Gummibärchen: 4037400344980
 import {onBeforeMount, type Ref, ref} from "vue";
 import {createProduct, halfSugar, receiveJsonByBarcode, receiveJsonByCategory} from "@/assets/js/foodapi/foodapi";
 import { Product } from "@/assets/js/foodapi/product";
-import Mainkachel from "@/components/Mainkachel.vue";
-import Listenelement from "@/components/Listenelement.vue";
-import Filterbutton from "@/components/Filterbutton.vue";
-import Headercomponent from "@/components/Headercomponent.vue";
+import Mainkachel from "@/components/YourProduct.vue";
+import Listenelement from "@/components/ListItem.vue";
+import Filterbutton from "@/components/Filter.vue";
+import Headercomponent from "@/components/Search.vue";
 import HeaderImage from "@/components/HeaderImage.vue";
 
 let loadData: Ref<Boolean> = ref(false);
