@@ -17,18 +17,21 @@ import Search from "@/components/Search.vue";
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
 import Loadscreen from "@/components/Loadscreen.vue";
+import NotFound from "@/components/NotFound.vue";
 
 let loadData: Ref<Boolean> = ref(false);
 let searching: Ref<Boolean> = ref(false);
+let loadFailure: Ref<Boolean> = ref(false);
 
 let searchbarcode: Ref<string> = ref('');
 let mainproduct: Product;
 let productlist: Product[] = [];
 
 async function loadProductData(barcode: string) {
-  //if (barcode !== searchbarcode.value) {
+  if (barcode !== searchbarcode.value) {
     searchbarcode.value = barcode;
     productlist = [];
+    loadFailure.value = false;
     loadData.value = false;
     searching.value = true;
     const barcodejson = await receiveJsonByBarcode(barcode);
@@ -44,11 +47,12 @@ async function loadProductData(barcode: string) {
       productlist = sortByZucker(productlist);
       loadData.value = true;
     } else {
+      loadFailure.value = true;
       console.log("Vorgang fehlgeschlagen");
     }
 
     searching.value = false;
-  //}
+  }
 }
 
 async function handleClickListitem(value: Product) {
@@ -66,6 +70,7 @@ async function handleClickListitem(value: Product) {
       <Search @click:search="loadProductData" @enter:search="loadProductData" />
 
       <Loadscreen :isLoading="searching" v-if="searching && searchbarcode !== ''" />
+      <NotFound v-if="loadFailure" />
 
       <YourProduct :mainproduct="mainproduct" :imageurl="mainproduct.product_image" v-if="loadData"/>
 
