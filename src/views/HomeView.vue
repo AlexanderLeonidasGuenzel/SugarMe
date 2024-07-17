@@ -9,7 +9,7 @@ Milchreis: 4000521031749
  */
 
 import {reactive, type Ref, ref} from "vue";
-import {createProduct, receiveJsonByBarcode, receiveJsonByCategory} from "@/assets/js/foodapi/foodapi";
+import {createProduct, receiveJsonByBarcode, receiveJsonByCategory, sortByZucker} from "@/assets/js/foodapi/foodapi";
 import { Product } from "@/assets/js/foodapi/product";
 import YourProduct from "@/components/YourProduct.vue";
 import ListItem from "@/components/ListItem.vue";
@@ -26,7 +26,7 @@ let mainproduct: Product;
 let productlist: Product[] = [];
 
 async function loadProductData(barcode: string) {
-  if (barcode !== searchbarcode.value) {
+  //if (barcode !== searchbarcode.value) {
     searchbarcode.value = barcode;
     productlist = [];
     loadData.value = false;
@@ -39,13 +39,14 @@ async function loadProductData(barcode: string) {
       for (let i = 0; i < json.products.length; i++) {
         productlist.push(reactive(createProduct(json.products[i])));
       }
+      productlist = sortByZucker(productlist);
     } else {
       console.log("Es wurde kein Produkt gefunden");
     }
 
     searching.value = false;
     loadData.value = true;
-  }
+  //}
 }
 
 async function handleClickListitem(value: Product) {

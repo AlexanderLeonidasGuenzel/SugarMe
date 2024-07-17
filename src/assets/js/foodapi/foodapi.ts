@@ -82,6 +82,11 @@ export function createProduct(json: any) : Product {
     return product;
 }
 
+// Function to sort products by zucker
+export function sortByZucker(products: Product[]): Product[] {
+    return products.sort((a, b) => (b.zucker || 0) - (a.zucker || 0));
+}
+
 /*
 export function halfSugar(product: Product) {
     let sugar: number = Math.floor(product.zucker / 2);

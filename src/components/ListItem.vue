@@ -9,8 +9,6 @@
         required: true
       }
     });
-
-    //{{ !props.child.hat_zutatenliste || props.child.zucker  === undefined ? 'leider keine Informationen verfügbar' : props.child.zucker === 0 ? 'zuckerfrei!' : props.child.zucker + 'g' }}
 </script>
 
 <template>
