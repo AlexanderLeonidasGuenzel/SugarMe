@@ -14,6 +14,6 @@
 <template>
     <div class="flex justify-between mb-3 px-5" @click="$emit('click:item', props.child)">
       <p class=""> {{ props.child.name }}</p>
-      <p class="mr-5"> <span class=""> {{ props.child.zucker  === undefined ? 'keine Informationen verfügbar' : props.child.zucker === 0 ? 'zuckerfrei!' : props.child.zucker + 'g' }} </span> </p>
+      <p class="mr-5"> <span class=""> {{ props.child.zucker  === undefined ? 'Keine Informationen' : props.child.zucker === 0 ? 'zuckerfrei!' : props.child.zucker + 'g' }} </span> </p>
     </div>
 </template>
