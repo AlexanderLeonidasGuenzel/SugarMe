@@ -23,7 +23,7 @@
         </p>
       </div>
       <div class="flex justify-center items-center w-1/3 bg-fuchsia-200 rounded-r-xl">
-      <img src="https://images.openfoodfacts.org/images/products/403/740/034/4980/front_de.3.400.jpg" alt="open food image" class="w-20 h-20 rounded-full brightness-125 shadow-xl border-white border-3"/>
+      <img src="https://images.openfoodfacts.org/images/products/403/740/034/4980/front_de.3.400.jpg" alt="open food image" class="w-20 h-20 rounded-full brightness-125 shadow-xl border-white/60 border-3"/>
       </div>
     </div>
   </div>
