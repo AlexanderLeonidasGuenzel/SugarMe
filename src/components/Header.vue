@@ -13,6 +13,6 @@
       <img src="~@/assets/lollipop_10947115.png" alt="blue lollipop icon" class="w-10 mr-3">
       Sugar Me!
     </h1>
-    <img src="@/assets/sugar.jpg" alt="sugar image" class="w-full h-40 object-cover rounded-lg shadow-lg">
+    <img src="@/assets/sugar.jpg" alt="sugar image" class="w-full h-40 object-cover rounded-lg shadow-lg border-white border-3">
   </div>
 </template>
