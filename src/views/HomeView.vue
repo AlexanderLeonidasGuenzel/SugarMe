@@ -69,7 +69,7 @@ async function handleClickListitem(value: Product) {
       <Loadscreen :isLoading="searching" v-if="searching && searchbarcode !== ''" />
       <NotFound v-if="loadFailure" />
       <YourProduct :mainproduct="mainproduct" :imageurl="mainproduct.product_image" v-if="loadData"/>
-      <!--
+
       <div class="flex justify-between w-full bg-white px-5 py-2 font-bold rounded mb-1" v-if="loadData">
         <p>Alternative Produkte:</p>
         <p>Zucker pro 100g</p>
@@ -82,9 +82,9 @@ async function handleClickListitem(value: Product) {
           </div>
         </div>
       </div>
-      -->
 
-      <ListContainer child="mainproduct" v-if="loadData" :productlist="productlist" @click:item="handleClickListitem"/>
+
+      <!--<ListContainer :child="mainproduct" :loadData="loadData" :productlist="productlist" />-->
     <Footer></Footer>
     </div>
   </div>
