@@ -33,19 +33,21 @@ async function loadProductData(barcode: string) {
     searching.value = true;
     const barcodejson = await receiveJsonByBarcode(barcode);
 
-    if (Object.keys(barcode).length > 0) {
+    console.log(barcodejson);
+
+    if (barcodejson.status !== "failure") {
       mainproduct = reactive(createProduct(barcodejson));
       const json = await receiveJsonByCategory(mainproduct.kategorie);
       for (let i = 0; i < json.products.length; i++) {
         productlist.push(reactive(createProduct(json.products[i])));
       }
       productlist = sortByZucker(productlist);
+      loadData.value = true;
     } else {
-      console.log("Es wurde kein Produkt gefunden");
+      console.log("Vorgang fehlgeschlagen");
     }
 
     searching.value = false;
-    loadData.value = true;
   //}
 }
 
