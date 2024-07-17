@@ -44,7 +44,7 @@ onBeforeMount(async () => {
 
   <div class="relative flex justify-center items-center w-full h-full bg-gradient-to-br from-cyan-200 to-purple-900">
     <!-- MAIN -->
-    <div class="flex flex-col justify-between items-center w-1/3 min-w-[375px] h-full bg-gray-100 px-10 pt-5">
+    <div class="flex flex-col justify-between items-center min-w-[375px] h-screen bg-gray-100 px-10 pt-5">
       <Header />
       <Search />
 
