@@ -40,9 +40,9 @@ onBeforeMount(async () => {
 </script>
 
 <template>
-  <div class="bg-gradient-to-br from-cyan-200 to-purple-900">
 
-  <div class="relative flex justify-center items-center w-full h-full">
+
+  <div class="relative flex justify-center items-center w-full h-full bg-gradient-to-br from-cyan-200 to-purple-900">
     <!-- MAIN -->
     <div class="flex flex-col justify-between items-center w-1/3 min-w-[375px] h-full bg-gray-100 px-10 pt-5">
       <Header />
@@ -64,6 +64,5 @@ onBeforeMount(async () => {
       </div>
     <Footer></Footer>
     </div>
-  </div>
   </div>
 </template>
