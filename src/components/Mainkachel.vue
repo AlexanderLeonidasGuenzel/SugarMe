@@ -17,7 +17,11 @@
         <h2 class="font-bold text-cyan-700">Dein Produkt</h2>
         <hr>
         <p class="w-full text-wrap"> {{ props.mainproduct.name }}</p>
-        <p> <span class="font-bold">Zucker</span> {{ props.mainproduct.zucker + "g "}}pro 100g</p>
+        <p>
+          <span class="font-bold">Zucker:</span>
+          {{ props.mainproduct.zucker === undefined ? 'zuckerfrei!' : props.mainproduct.zucker + 'g pro 100g'}}
+        </p>
+
       </div>
       <img src="https://images.openfoodfacts.org/images/products/403/740/034/4980/front_de.3.400.jpg" alt="open food image" class="w-2/5 rounded-r-xl"/>
     </div>
