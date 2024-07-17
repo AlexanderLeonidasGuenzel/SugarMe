@@ -17,8 +17,8 @@ import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
 import Loadscreen from "@/components/Loadscreen.vue";
 import NotFound from "@/components/NotFound.vue";
-import ListContainer from "@/components/ListContainer.vue";
 import StartText from "@/components/StartText.vue";
+import ListItem from "@/components/ListItem.vue";
 
 let loadData: Ref<Boolean> = ref(false);
 let searching: Ref<Boolean> = ref(false);
@@ -84,9 +84,6 @@ async function handleClickListitem(value: Product) {
           </div>
         </div>
       </div>
-
-
-      <!--<ListContainer :child="mainproduct" :loadData="loadData" :productlist="productlist" />-->
     <Footer></Footer>
     </div>
   </div>
