@@ -15,21 +15,27 @@ import ListItem from "@/components/ListItem.vue";
 import Search from "@/components/Search.vue";
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
+import Loadscreen from "@/components/Loadscreen.vue";
 
 let loadData: Ref<Boolean> = ref(false);
+let searching: Ref<Boolean> = ref(false);
 
+let searchbarcode: Ref<string> = ref('');
 let mainproduct: Product;
 let productlist: Product[] = [];
 
 async function loadProductData(barcode: string) {
+  searchbarcode.value = barcode;
   productlist = [];
   loadData.value = false;
+  searching.value = true;
   const barcodejson = await receiveJsonByBarcode(barcode);
   mainproduct = reactive(createProduct(barcodejson));
   const json = await receiveJsonByCategory(mainproduct.kategorie);
   for (let i = 0; i < json.products.length; i++) {
     productlist.push(reactive(createProduct(json.products[i])));
   }
+  searching.value = false;
   loadData.value = true;
 }
 </script>
@@ -39,13 +45,15 @@ async function loadProductData(barcode: string) {
 
   <div class="relative flex justify-center items-center w-full h-full bg-gradient-to-br from-cyan-200 to-purple-900">
     <!-- MAIN -->
-    <div class="flex flex-col justify-between items-center w-[489px] min-w-[375px] max-w-[489px] h-screen bg-gray-100 px-10 pt-5">
+    <div class="flex flex-col items-center w-[489px] min-w-[375px] max-w-[489px] h-screen bg-gray-100 px-10 pt-5">
       <Header />
-      <Search @click:search="loadProductData"/>
+      <Search @click:search="loadProductData" @enter:search="loadProductData" />
+
+      <Loadscreen :isLoading="searching" v-if="searching && searchbarcode !== ''" />
 
       <YourProduct :mainproduct="mainproduct" :imageurl="mainproduct.product_image" v-if="loadData"/>
 
-      <div class="flex justify-between w-full bg-white px-5 py-2 font-bold rounded-s mb-1" v-if="loadData">
+      <div class="flex justify-between w-full bg-white px-5 py-2 font-bold rounded mb-1" v-if="loadData">
         <p>Produkt</p>
         <p>Zucker pro 100g</p>
       </div>

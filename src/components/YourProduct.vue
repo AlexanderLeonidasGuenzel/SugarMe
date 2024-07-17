@@ -16,7 +16,7 @@
 <template>
   <div class="w-full h-50 mb-10 mx-8">
 
-    <div class="flex shadow shadow-lg z-0 bg-white rounded-xl text-cyan-600">
+    <div class="flex shadow-lg z-0 bg-white rounded-xl text-cyan-600">
       <div class="flex flex-col justify-evenly w-2/3 text-lg flex-wrap p-5">
         <h2 class="font-bold text-cyan-700">Dein Produkt</h2>
         <hr>
