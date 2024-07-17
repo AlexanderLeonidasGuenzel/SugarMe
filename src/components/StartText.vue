@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class="w-full h-96 my-16">
+  <div class="w-full h-96 my-16" >
     <div class="flex flex-col  bg-white p-10 text-cyan-600 border-3 border-green-200 rounded-xl">
 
       <div class="text-center flex justify-evenly items-center">
@@ -23,3 +23,4 @@
     </div>
   </div>
 </template>
+
