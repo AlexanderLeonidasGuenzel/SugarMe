@@ -61,8 +61,6 @@ async function handleClickListitem(value: Product) {
 </script>
 
 <template>
-
-
   <div class="relative flex justify-center items-center w-full h-full bg-gradient-to-br from-cyan-200 to-purple-900">
     <!-- MAIN -->
     <div class="flex flex-col items-center w-[489px] min-w-[375px] max-w-[489px] h-screen bg-gray-100 px-10 pt-5">
@@ -82,7 +80,7 @@ async function handleClickListitem(value: Product) {
       <div class="relative w-full h-3/5 my-5 overflow-y-auto" v-if="loadData">
         <div v-if="loadData">
           <div v-for="(item, index) in productlist" :key="index">
-            <ListItem class="flex items-center w-full h-12 pr-1 hover:bg-gray-200 border-b border-cyan-700 cursor-pointer" :child="item" v-if="item.name !== undefined && item.name !== ''" @click:item="handleClickListitem"></ListItem>
+            <ListItem class="flex items-center w-full h-12 pr-1 hover:bg-gray-200 border-b border-cyan-700 cursor-pointer" :child="item" v-if="item.name !== undefined && item.name !== '' && item.barcode !== mainproduct.barcode" @click:item="handleClickListitem"></ListItem>
           </div>
         </div>
       </div>
