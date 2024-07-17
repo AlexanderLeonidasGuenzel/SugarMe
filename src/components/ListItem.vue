@@ -10,8 +10,8 @@
 </script>
 
 <template>
-    <div class="flex justify-between">
-        <p> {{ props.child.name }}</p>
-      <p class="text-xs"> Zucker: <span class="text-xs"> {{ props.child.zucker }} g á 100g </span> </p>
+    <div class="flex justify-between mb-3 px-5">
+      <p class=""> {{ props.child.name }}</p>
+      <p class="mr-5"> <span class=""> {{ props.child.zucker }}g </span> </p>
     </div>
 </template>

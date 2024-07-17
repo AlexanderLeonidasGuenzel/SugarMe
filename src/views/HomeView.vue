@@ -14,7 +14,8 @@ import Mainkachel from "@/components/YourProduct.vue";
 import Listenelement from "@/components/ListItem.vue";
 import Filterbutton from "@/components/Filter.vue";
 import Headercomponent from "@/components/Search.vue";
-import HeaderImage from "@/components/HeaderImage.vue";
+import HeaderImage from "@/components/Header.vue";
+import Footer from "@/components/Footer.vue";
 
 let loadData: Ref<Boolean> = ref(false);
 
@@ -41,20 +42,25 @@ onBeforeMount(async () => {
 <template>
   <div class="relative flex justify-center items-center w-full h-full">
     <!-- MAIN -->
-    <div class="flex flex-col justify-between items-center w-1/3 min-w-[375px] h-full bg-gray-100 p-5">
+    <div class="flex flex-col justify-between items-center w-1/3 min-w-[375px] h-full bg-gray-100 px-10 pt-5">
       <HeaderImage />
       <Headercomponent />
 
       <Mainkachel :mainproduct="mainproduct" v-if="loadData"/>
 
-      <!-- FILTERBUTTON -->
+      <!-- FILTERBUTTON
       <Filterbutton :sugar="mainproduct.zucker" @click:half="halfSugar(mainproduct)" v-if="loadData"/>
-
-      <div class="w-full h-3/5 overflow-y-auto" v-if="loadData">
+      -->
+      <div class="w-full h-3/5 overflow-y-auto my-5" v-if="loadData">
+        <div class="flex justify-between bg-white px-5 py-2 font-bold rounded-s mb-3">
+          <p>Produkt</p>
+          <p>Zucker pro 100g</p>
+        </div>
         <div v-for="(item, index) in productlist" :key="index">
           <Listenelement class="flex items-center w-full h-12 pr-1 hover:bg-gray-200 border-b border-cyan-700 cursor-pointer" :child="item" v-if="item.name !== undefined && item.name !== ''"></Listenelement>
         </div>
       </div>
+    <Footer></Footer>
     </div>
   </div>
 </template>
