@@ -5,6 +5,7 @@ export class Product {
     barcode: string | undefined = "";
     allergene: string = "";
     kategorie: string = "";
+    hat_zutatenliste: boolean = false;
     zutatenliste_string: string = ""; //ingedients-text_de
     kcal: number = 0.00; //energy-kcal_100g
     kcal_unit: string = ""; //energy-kcal_unit
@@ -18,7 +19,7 @@ export class Product {
     gesaettigte_fettsaeuren_unit: string = ""; //saturated_fat_unit
     natrium: number = 0.00; //sodium_100g
     natrium_unit: string = ""; //sodium_unit
-    zucker: number = 0.00; //sugars_100g
+    zucker: number | undefined = 0.00; //sugars_100g
     zucker_unit: string = ""; //sugars_unit
     koffein: number = 0.00; //caffeine_100g
     koffein_unit: string = ""; //caffeine_unit

@@ -5,6 +5,7 @@
 /*
 Energy Drink: 5060337500401
 Gummibärchen: 4037400344980
+Milchreis: 4000521031749
  */
 
 import {reactive, type Ref, ref} from "vue";
@@ -25,18 +26,20 @@ let mainproduct: Product;
 let productlist: Product[] = [];
 
 async function loadProductData(barcode: string) {
-  searchbarcode.value = barcode;
-  productlist = [];
-  loadData.value = false;
-  searching.value = true;
-  const barcodejson = await receiveJsonByBarcode(barcode);
-  mainproduct = reactive(createProduct(barcodejson));
-  const json = await receiveJsonByCategory(mainproduct.kategorie);
-  for (let i = 0; i < json.products.length; i++) {
-    productlist.push(reactive(createProduct(json.products[i])));
+  if (barcode !== searchbarcode.value) {
+    searchbarcode.value = barcode;
+    productlist = [];
+    loadData.value = false;
+    searching.value = true;
+    const barcodejson = await receiveJsonByBarcode(barcode);
+    mainproduct = reactive(createProduct(barcodejson));
+    const json = await receiveJsonByCategory(mainproduct.kategorie);
+    for (let i = 0; i < json.products.length; i++) {
+      productlist.push(reactive(createProduct(json.products[i])));
+    }
+    searching.value = false;
+    loadData.value = true;
   }
-  searching.value = false;
-  loadData.value = true;
 }
 </script>
 
@@ -54,7 +57,7 @@ async function loadProductData(barcode: string) {
       <YourProduct :mainproduct="mainproduct" :imageurl="mainproduct.product_image" v-if="loadData"/>
 
       <div class="flex justify-between w-full bg-white px-5 py-2 font-bold rounded mb-1" v-if="loadData">
-        <p>Produkt</p>
+        <p>Alternative Produkte:</p>
         <p>Zucker pro 100g</p>
       </div>
 

@@ -11,6 +11,8 @@
       required: true
     }
   });
+
+  //{{ props.mainproduct.zucker === undefined ? 'zuckerfrei!' : props.mainproduct.zucker + 'g pro 100g'}}
 </script>
 
 <template>
@@ -23,7 +25,7 @@
         <p class="w-full text-wrap"> {{ props.mainproduct.name }}</p>
         <p>
           <span class="font-bold">Zucker:</span>
-          {{ props.mainproduct.zucker === undefined ? 'zuckerfrei!' : props.mainproduct.zucker + 'g pro 100g'}}
+          {{ props.mainproduct.hat_zutatenliste ? props.mainproduct.zucker === undefined ? 'zuckerfrei!' : props.mainproduct.zucker + 'g pro 100g' : 'leider keine Informationen verfügbar'}}
         </p>
       </div>
       <div class="flex justify-center items-center w-1/3 bg-fuchsia-200 rounded-r-xl">

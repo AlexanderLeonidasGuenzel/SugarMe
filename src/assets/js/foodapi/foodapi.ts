@@ -34,6 +34,10 @@ export function createProduct(json: any) : Product {
 
     const nutrimentsjson: any = productjson["nutriments"];
 
+    if (Object.keys(nutrimentsjson).length > 0) {
+        product.hat_zutatenliste = true;
+    }
+
     product.name = productjson["product_name_de"];
     product.barcode = productjson["code"];
 
@@ -52,26 +56,28 @@ export function createProduct(json: any) : Product {
     product.zutatenliste_string = productjson["ingredients_text"];
     product.product_image = productjson["image_url"];
 
-    product.kcal = nutrimentsjson["energy-kcal_100g"];
-    product.kcal_unit = nutrimentsjson["energy-kcal_100g"];
-    product.fett = nutrimentsjson["fat_100g"];
-    product.fett_unit = nutrimentsjson["fat_unit"];
-    product.proteine = nutrimentsjson["proteins_100g"];
-    product.proteine_unit = nutrimentsjson["proteins_unit"];
-    product.salz = nutrimentsjson["salt_100g"];
-    product.salz_unit = nutrimentsjson["salt_unit"];
-    product.gesaettigte_fettsaeuren = nutrimentsjson["saturated-fat_100g"];
-    product.gesaettigte_fettsaeuren_unit = nutrimentsjson["saturated-fat_unit"];
-    product.natrium = nutrimentsjson["sodium_100g"];
-    product.natrium_unit = nutrimentsjson["sodium_unit"];
-    product.zucker = nutrimentsjson["sugars_100g"];
-    product.zucker_unit = nutrimentsjson["sugars_unit"];
-    product.koffein = nutrimentsjson["caffeine_100g"];
-    product.koffein_unit = nutrimentsjson["caffeine_unit"];
-    product.vitamin_b6 = nutrimentsjson["vitamin-b6_100g"];
-    product.vitamin_b6_unit = nutrimentsjson["vitamin-b6_unit"];
-    product.vitamin_b12 = nutrimentsjson["vitamin-b12_100g"];
-    product.vitamin_b12_unit = nutrimentsjson["vitamin-b12_unit"];
+    if (product.hat_zutatenliste) {
+        product.kcal = nutrimentsjson["energy-kcal_100g"];
+        product.kcal_unit = nutrimentsjson["energy-kcal_100g"];
+        product.fett = nutrimentsjson["fat_100g"];
+        product.fett_unit = nutrimentsjson["fat_unit"];
+        product.proteine = nutrimentsjson["proteins_100g"];
+        product.proteine_unit = nutrimentsjson["proteins_unit"];
+        product.salz = nutrimentsjson["salt_100g"];
+        product.salz_unit = nutrimentsjson["salt_unit"];
+        product.gesaettigte_fettsaeuren = nutrimentsjson["saturated-fat_100g"];
+        product.gesaettigte_fettsaeuren_unit = nutrimentsjson["saturated-fat_unit"];
+        product.natrium = nutrimentsjson["sodium_100g"];
+        product.natrium_unit = nutrimentsjson["sodium_unit"];
+        product.zucker = nutrimentsjson["sugars_100g"];
+        product.zucker_unit = nutrimentsjson["sugars_unit"];
+        product.koffein = nutrimentsjson["caffeine_100g"];
+        product.koffein_unit = nutrimentsjson["caffeine_unit"];
+        product.vitamin_b6 = nutrimentsjson["vitamin-b6_100g"];
+        product.vitamin_b6_unit = nutrimentsjson["vitamin-b6_unit"];
+        product.vitamin_b12 = nutrimentsjson["vitamin-b12_100g"];
+        product.vitamin_b12_unit = nutrimentsjson["vitamin-b12_unit"];
+    }
 
     return product;
 }
