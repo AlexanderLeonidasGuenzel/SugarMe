@@ -10,11 +10,11 @@ Gummibärchen: 4037400344980
 import {onBeforeMount, type Ref, ref} from "vue";
 import {createProduct, halfSugar, receiveJsonByBarcode, receiveJsonByCategory} from "@/assets/js/foodapi/foodapi";
 import { Product } from "@/assets/js/foodapi/product";
-import Mainkachel from "@/components/YourProduct.vue";
-import Listenelement from "@/components/ListItem.vue";
-import Filterbutton from "@/components/Filter.vue";
-import Headercomponent from "@/components/Search.vue";
-import HeaderImage from "@/components/Header.vue";
+import YourProduct from "@/components/YourProduct.vue";
+import ListItem from "@/components/ListItem.vue";
+import Filter from "@/components/Filter.vue";
+import Search from "@/components/Search.vue";
+import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
 
 let loadData: Ref<Boolean> = ref(false);
@@ -43,13 +43,13 @@ onBeforeMount(async () => {
   <div class="relative flex justify-center items-center w-full h-full">
     <!-- MAIN -->
     <div class="flex flex-col justify-between items-center w-1/3 min-w-[375px] h-full bg-gray-100 px-10 pt-5">
-      <HeaderImage />
-      <Headercomponent />
+      <Header />
+      <Search />
 
-      <Mainkachel :mainproduct="mainproduct" v-if="loadData"/>
+      <YourProduct :mainproduct="mainproduct" v-if="loadData"/>
 
       <!-- FILTERBUTTON
-      <Filterbutton :sugar="mainproduct.zucker" @click:half="halfSugar(mainproduct)" v-if="loadData"/>
+      <Filter :sugar="mainproduct.zucker" @click:half="halfSugar(mainproduct)" v-if="loadData"/>
       -->
       <div class="w-full h-3/5 overflow-y-auto my-5" v-if="loadData">
         <div class="flex justify-between bg-white px-5 py-2 font-bold rounded-s mb-3">
@@ -57,7 +57,7 @@ onBeforeMount(async () => {
           <p>Zucker pro 100g</p>
         </div>
         <div v-for="(item, index) in productlist" :key="index">
-          <Listenelement class="flex items-center w-full h-12 pr-1 hover:bg-gray-200 border-b border-cyan-700 cursor-pointer" :child="item" v-if="item.name !== undefined && item.name !== ''"></Listenelement>
+          <ListItem class="flex items-center w-full h-12 pr-1 hover:bg-gray-200 border-b border-cyan-700 cursor-pointer" :child="item" v-if="item.name !== undefined && item.name !== ''"></ListItem>
         </div>
       </div>
     <Footer></Footer>
