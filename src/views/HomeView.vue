@@ -12,12 +12,12 @@ import {reactive, type Ref, ref} from "vue";
 import {createProduct, receiveJsonByBarcode, receiveJsonByCategory, sortByZucker} from "@/assets/js/foodapi/foodapi";
 import { Product } from "@/assets/js/foodapi/product";
 import YourProduct from "@/components/YourProduct.vue";
-import ListItem from "@/components/ListItem.vue";
 import Search from "@/components/Search.vue";
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
 import Loadscreen from "@/components/Loadscreen.vue";
 import NotFound from "@/components/NotFound.vue";
+import ListContainer from "@/components/ListContainer.vue";
 
 let loadData: Ref<Boolean> = ref(false);
 let searching: Ref<Boolean> = ref(false);
@@ -66,12 +66,10 @@ async function handleClickListitem(value: Product) {
     <div class="flex flex-col items-center w-[489px] min-w-[375px] max-w-[489px] h-screen bg-gray-100 px-10 pt-5">
       <Header />
       <Search @click:search="loadProductData" @enter:search="loadProductData" />
-
       <Loadscreen :isLoading="searching" v-if="searching && searchbarcode !== ''" />
       <NotFound v-if="loadFailure" />
-
       <YourProduct :mainproduct="mainproduct" :imageurl="mainproduct.product_image" v-if="loadData"/>
-
+      <!--
       <div class="flex justify-between w-full bg-white px-5 py-2 font-bold rounded mb-1" v-if="loadData">
         <p>Alternative Produkte:</p>
         <p>Zucker pro 100g</p>
@@ -84,6 +82,9 @@ async function handleClickListitem(value: Product) {
           </div>
         </div>
       </div>
+      -->
+
+      <ListContainer child="mainproduct" v-if="loadData" :productlist="productlist" @click:item="handleClickListitem"/>
     <Footer></Footer>
     </div>
   </div>
