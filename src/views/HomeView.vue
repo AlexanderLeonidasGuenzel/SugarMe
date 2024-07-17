@@ -62,8 +62,6 @@ async function handleClickListitem(value: Product) {
 </script>
 
 <template>
-
-
   <div class="relative flex justify-center items-center w-full h-full bg-gradient-to-br from-cyan-200 to-purple-900">
     <!-- MAIN -->
     <div class="flex flex-col items-center w-[489px] min-w-[375px] max-w-[489px] h-screen bg-gray-100 px-10 pt-5">
@@ -73,8 +71,23 @@ async function handleClickListitem(value: Product) {
       <Loadscreen :isLoading="searching" v-if="searching && searchbarcode !== ''" />
       <NotFound v-if="loadFailure" />
       <YourProduct :mainproduct="mainproduct" :imageurl="mainproduct.product_image" v-if="loadData"/>
-      <ListContainer child="mainproduct" v-if="loadData" :productlist="productlist" @click:item="handleClickListitem"/>
-      <Footer></Footer>
+
+      <div class="flex justify-between w-full bg-white px-5 py-2 font-bold rounded mb-1" v-if="loadData">
+        <p>Alternative Produkte:</p>
+        <p>Zucker pro 100g</p>
+      </div>
+
+      <div class="relative w-full h-3/5 my-5 overflow-y-auto" v-if="loadData">
+        <div v-if="loadData">
+          <div v-for="(item, index) in productlist" :key="index">
+            <ListItem class="flex items-center w-full h-12 pr-1 hover:bg-gray-200 border-b border-cyan-700 cursor-pointer" :child="item" v-if="item.name !== undefined && item.name !== '' && item.barcode !== mainproduct.barcode" @click:item="handleClickListitem"></ListItem>
+          </div>
+        </div>
+      </div>
+
+
+      <!--<ListContainer :child="mainproduct" :loadData="loadData" :productlist="productlist" />-->
+    <Footer></Footer>
     </div>
   </div>
 </template>
