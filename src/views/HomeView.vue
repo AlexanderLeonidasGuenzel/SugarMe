@@ -70,8 +70,8 @@ async function handleClickListitem(value: Product) {
       <Search @click:search="loadProductData" @enter:search="loadProductData" />
       <Loadscreen :isLoading="searching" v-if="searching && searchbarcode !== ''" />
       <NotFound v-if="loadFailure" />
-       <ListContainer child="mainproduct" v-if="loadData" :productlist="productlist" @click:item="handleClickListitem"/>
       <YourProduct :mainproduct="mainproduct" :imageurl="mainproduct.product_image" v-if="loadData"/>
+      <ListContainer child="mainproduct" v-if="loadData" :productlist="productlist" @click:item="handleClickListitem"/>
     <Footer></Footer>
     </div>
   </div>
